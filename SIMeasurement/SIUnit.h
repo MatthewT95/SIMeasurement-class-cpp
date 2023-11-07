@@ -38,3 +38,4 @@ struct SIUnit
 #define SI_VOLUME SIUnit(3, 0, 0, 0, 0, 0, 0)
 #define SI_VELOCITY SIUnit(1, -1, 0, 0, 0, 0, 0)
 #define SI_ACCELRATION SIUnit(1, -2, 0, 0, 0, 0, 0)
+#define SI_FREQUENCY SIUnit(0, -1, 0, 0, 0, 0, 0)
