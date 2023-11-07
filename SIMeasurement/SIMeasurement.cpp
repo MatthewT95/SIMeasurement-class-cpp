@@ -128,8 +128,8 @@ std::string SIMeasurement::toString() const
     std::string unitsNumerator = "";
     std::string unitsDenominator = "";
     appendUnitString("s", this->getTimeExponent(), unitsNumerator, unitsDenominator);
-    appendUnitString("m", this->getLengthExponent(), unitsNumerator, unitsDenominator);
     appendUnitString("kg", this->getMassExponent(), unitsNumerator, unitsDenominator);
+    appendUnitString("m", this->getLengthExponent(), unitsNumerator, unitsDenominator);
     appendUnitString("A", this->getCurrentExponent(), unitsNumerator, unitsDenominator);
     appendUnitString("K", this->getTemperatureExponent(), unitsNumerator, unitsDenominator);
     appendUnitString("mole", this->getMolesExponent(), unitsNumerator, unitsDenominator);
