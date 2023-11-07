@@ -41,3 +41,5 @@ struct SIUnit
 #define SI_FREQUENCY SIUnit(0, -1, 0, 0, 0, 0, 0)
 #define SI_VOLUMETRIC_FLOW SIUnit(3, -1, 0, 0, 0, 0, 0)
 #define SI_FORCE SIUnit(1, -2, 1, 0, 0, 0, 0)
+#define SI_ENGERY SIUnit(2, -2, 1, 0, 0, 0, 0)
+#define SI_POWER SIUnit(2, -3, 1, 0, 0, 0, 0)
