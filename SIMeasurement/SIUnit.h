@@ -40,3 +40,4 @@ struct SIUnit
 #define SI_ACCELRATION SIUnit(1, -2, 0, 0, 0, 0, 0)
 #define SI_FREQUENCY SIUnit(0, -1, 0, 0, 0, 0, 0)
 #define SI_VOLUMETRIC_FLOW SIUnit(3, -1, 0, 0, 0, 0, 0)
+#define SI_FORCE SIUnit(1, -2, 1, 0, 0, 0, 0)
