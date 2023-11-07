@@ -99,3 +99,68 @@ int8_t SIMeasurement::getLuminousExponent() const
 {
     return this->luminousExponent;
 }
+
+inline void SIMeasurement::appendUnitString(std::string unitSymbol, int8_t unitExponent, std::string& unitsNumerator, std::string& unitsDenominator) const
+{
+    if (unitExponent > 1)
+    {
+        unitsNumerator += unitSymbol + "^" + std::to_string(abs(unitExponent)) + "*";
+    }
+    else if (unitExponent == 1)
+    {
+        unitsNumerator += unitSymbol + "*";
+    }
+    else if (unitExponent == 0)
+    {
+    }
+    else if (unitExponent == -1)
+    {
+        unitsDenominator += unitSymbol + "*";
+    }
+    else if (unitExponent < -1)
+    {
+        unitsDenominator += unitSymbol + "^" + std::to_string(abs(unitExponent)) + "*";
+    }
+}
+
+std::string SIMeasurement::toString() const
+{
+    std::string unitsNumerator = "";
+    std::string unitsDenominator = "";
+    appendUnitString("s", this->getTimeExponent(), unitsNumerator, unitsDenominator);
+    appendUnitString("m", this->getLengthExponent(), unitsNumerator, unitsDenominator);
+    appendUnitString("kg", this->getMassExponent(), unitsNumerator, unitsDenominator);
+    appendUnitString("A", this->getCurrentExponent(), unitsNumerator, unitsDenominator);
+    appendUnitString("K", this->getTemperatureExponent(), unitsNumerator, unitsDenominator);
+    appendUnitString("mole", this->getMolesExponent(), unitsNumerator, unitsDenominator);
+    appendUnitString("cd", this->getLuminousExponent(), unitsNumerator, unitsDenominator);
+
+    // Trim extra * from unitsNumerator
+    if (unitsNumerator.size() > 1)
+    {
+        unitsNumerator = unitsNumerator.substr(0, unitsNumerator.size() - 1);
+    }
+    // Trim extra * from unitsDenominator
+    if (unitsDenominator.size() > 1)
+    {
+        unitsDenominator = unitsDenominator.substr(0, unitsDenominator.size() - 1);
+    }
+
+    if (unitsNumerator == "" && unitsDenominator == "")
+    {
+        return std::to_string(getMagnitude());
+    }
+    else if (unitsNumerator == "")
+    {
+        return std::to_string(getMagnitude()) + "1/" + unitsDenominator;
+    }
+    else if (unitsDenominator == "")
+    {
+        return std::to_string(getMagnitude()) + unitsNumerator;
+    }
+    else
+    {
+        return std::to_string(getMagnitude()) + unitsNumerator + "/" + unitsDenominator;
+    }
+    return std::string();
+}

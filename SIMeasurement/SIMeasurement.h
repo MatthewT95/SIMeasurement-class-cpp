@@ -15,6 +15,7 @@ private:
     int8_t molesExponent;
     int8_t luminousExponent;
 
+    void appendUnitString(std::string unitSymbol, int8_t unitExponent, std::string& unitsNumerator, std::string& unitsDenominator) const;
 public:
     // constructors
     SIMeasurement();
