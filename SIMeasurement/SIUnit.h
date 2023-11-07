@@ -33,3 +33,8 @@ struct SIUnit
 #define SI_CURRENT SIUnit(0, 0, 0, 0, 1, 0, 0)
 #define SI_MOLE SIUnit(1, 0, 0, 0, 0, 1, 0)
 #define SI_LUMINOUS SIUnit(1, 0, 0, 0, 0, 0, 1)
+// Derived Units
+#define SI_AREA SIUnit(2, 0, 0, 0, 0, 0, 0)
+#define SI_VOLUME SIUnit(3, 0, 0, 0, 0, 0, 0)
+#define SI_VELOCITY SIUnit(1, -1, 0, 0, 0, 0, 0)
+#define SI_ACCELRATION SIUnit(1, -2, 0, 0, 0, 0, 0)
