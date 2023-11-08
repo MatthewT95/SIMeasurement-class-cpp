@@ -278,3 +278,9 @@ bool operator<=(const SIMeasurement& lhs, const SIMeasurement& rhs)
 {
     return (lhs < rhs || lhs == rhs);
 }
+
+std::ostream& operator<<(std::ostream& out, const SIMeasurement& c)
+{
+    out << c.toString();
+    return out;
+}

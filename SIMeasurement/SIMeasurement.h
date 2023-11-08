@@ -2,6 +2,7 @@
 #include <cstdint>
 #include <string>
 #include "SIUnit.h"
+#include <iostream>
 
 class SIMeasurement
 {
@@ -54,5 +55,8 @@ public:
     friend bool operator<(const SIMeasurement& lhs, const SIMeasurement& rhs);
     friend bool operator>=(const SIMeasurement& lhs, const SIMeasurement& rhs);
     friend bool operator<=(const SIMeasurement& lhs, const SIMeasurement& rhs);
+
+    // Stream opeartor
+    friend std::ostream& operator << (std::ostream& out, const SIMeasurement& c);
 };
 
