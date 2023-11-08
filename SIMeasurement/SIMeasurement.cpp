@@ -246,3 +246,15 @@ SIMeasurement operator-(const SIMeasurement& lhs, const SIMeasurement& rhs)
         return SIMeasurement();
     }
 }
+
+bool operator==(const SIMeasurement& lhs, const SIMeasurement& rhs)
+{
+
+    return (SIMeasurement::unitsMatch(lhs, rhs) && lhs.magnitude == rhs.magnitude);
+}
+
+bool operator!=(const SIMeasurement& lhs, const SIMeasurement& rhs)
+{
+
+    return !(lhs == rhs);
+}

@@ -39,9 +39,14 @@ public:
     static bool unitsMatch(const SIMeasurement& a, const SIMeasurement& b);
     static bool unitsMatch(const SIMeasurement& messurement, const SIUnit& unit);
 
+    // Arithmetic operators
     friend SIMeasurement operator*(const SIMeasurement& lhs, const SIMeasurement& rhs);
     friend SIMeasurement operator/(const SIMeasurement& lhs, const SIMeasurement& rhs);
     friend SIMeasurement operator+(const SIMeasurement& lhs, const SIMeasurement& rhs);
     friend SIMeasurement operator-(const SIMeasurement& lhs, const SIMeasurement& rhs);
+
+    // Equality operators
+    friend bool operator==(const SIMeasurement& lhs, const SIMeasurement& rhs);
+    friend bool operator!=(const SIMeasurement& lhs, const SIMeasurement& rhs);
 };
 
