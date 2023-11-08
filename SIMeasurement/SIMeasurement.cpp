@@ -226,7 +226,7 @@ SIMeasurement operator+(const SIMeasurement& lhs, const SIMeasurement& rhs)
     }
     else
     {
-        throw std::logic_error("Added SIMeasurements with differnt units.");
+        throw std::logic_error("Added SIMeasurements with different units.");
         return SIMeasurement();
     }
 }
@@ -241,7 +241,7 @@ SIMeasurement operator-(const SIMeasurement& lhs, const SIMeasurement& rhs)
     }
     else
     {
-        throw std::logic_error("Subtracted by an SIMeasurement with differnt units.");
+        throw std::logic_error("Subtracted by an SIMeasurement with different units.");
         return SIMeasurement();
     }
 }
