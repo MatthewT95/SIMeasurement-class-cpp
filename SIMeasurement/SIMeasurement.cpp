@@ -164,3 +164,31 @@ std::string SIMeasurement::toString() const
     }
     return std::string();
 }
+
+SIMeasurement operator*(const SIMeasurement& lhs, const SIMeasurement& rhs)
+{
+    SIMeasurement c;
+    c.magnitude = lhs.magnitude * rhs.magnitude;
+    c.lengthExponent = lhs.lengthExponent + rhs.lengthExponent;
+    c.timeExponent = lhs.timeExponent + rhs.timeExponent;
+    c.massExponent = lhs.massExponent + rhs.massExponent;
+    c.temperatureExponent = lhs.temperatureExponent + rhs.temperatureExponent;
+    c.currentExponent = lhs.currentExponent + rhs.currentExponent;
+    c.molesExponent = lhs.molesExponent + rhs.molesExponent;
+    c.luminousExponent = lhs.luminousExponent + rhs.luminousExponent;
+    return c;
+}
+
+SIMeasurement operator/(const SIMeasurement& lhs, const SIMeasurement& rhs)
+{
+    SIMeasurement c;
+    c.magnitude = lhs.magnitude / rhs.magnitude;
+    c.lengthExponent = lhs.lengthExponent - rhs.lengthExponent;
+    c.timeExponent = lhs.timeExponent - rhs.timeExponent;
+    c.massExponent = lhs.massExponent - rhs.massExponent;
+    c.temperatureExponent = lhs.temperatureExponent - rhs.temperatureExponent;
+    c.currentExponent = lhs.currentExponent - rhs.currentExponent;
+    c.molesExponent = lhs.molesExponent - rhs.molesExponent;
+    c.luminousExponent = lhs.luminousExponent - rhs.luminousExponent;
+    return c;
+}
