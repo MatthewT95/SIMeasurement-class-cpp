@@ -4,7 +4,7 @@ This class provides a datatype for storing and performing operations on measurem
 
 ## Authors
 
-- [@MatthewT95](https://www.github.com/MatthewT95)
+- [@MatthewT95 (Matthew Taormina)](https://www.github.com/MatthewT95)
 
 ## Installation
 
