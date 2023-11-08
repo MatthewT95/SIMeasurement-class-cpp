@@ -37,8 +37,8 @@ struct SIUnit
 // Derived Units
 #define SI_METER_SQURED SIUnit(2, 0, 0, 0, 0, 0, 0)
 #define SI_METER_CUBED SIUnit(3, 0, 0, 0, 0, 0, 0)
-#define SI_METERS_PER_SECOND SIUnit(1, -1, 0, 0, 0, 0, 0)
-#define SI_METERS_PER_SECOND_SQURED SIUnit(1, -2, 0, 0, 0, 0, 0)
+#define SI_METER_PER_SECOND SIUnit(1, -1, 0, 0, 0, 0, 0)
+#define SI_METER_PER_SECOND_SQURED SIUnit(1, -2, 0, 0, 0, 0, 0)
 #define SI_HZ SIUnit(0, -1, 0, 0, 0, 0, 0)
 #define SI_METER_CUBED_PER_SECOND SIUnit(3, -1, 0, 0, 0, 0, 0)
 #define SI_NEWTON SIUnit(1, -2, 1, 0, 0, 0, 0)
