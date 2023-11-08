@@ -211,7 +211,37 @@ SIMeasurement operator/(const SIMeasurement& lhs, const SIMeasurement& rhs)
     }
     else
     {
-        throw std::logic_error("You can not divide by an SIMessurement with magnitude of zero.");
+        throw std::logic_error("Divided by an SIMessurement with magnitude of zero.");
+        return SIMeasurement();
+    }
+}
+
+SIMeasurement operator+(const SIMeasurement& lhs, const SIMeasurement& rhs)
+{
+    if (SIMeasurement::unitsMatch(lhs, rhs))
+    {
+        SIMeasurement c = lhs;
+        c.magnitude = c.magnitude + rhs.magnitude;
+        return c;
+    }
+    else
+    {
+        throw std::logic_error("Added SIMeasurements with differnt units.");
+        return SIMeasurement();
+    }
+}
+
+SIMeasurement operator-(const SIMeasurement& lhs, const SIMeasurement& rhs)
+{
+    if (SIMeasurement::unitsMatch(lhs, rhs))
+    {
+        SIMeasurement c = lhs;
+        c.magnitude = c.magnitude - rhs.magnitude;
+        return c;
+    }
+    else
+    {
+        throw std::logic_error("Subtracted by an SIMeasurement with differnt units.");
         return SIMeasurement();
     }
 }
