@@ -36,6 +36,9 @@ public:
 
     std::string toString() const;
 
+    static bool unitsMatch(const SIMeasurement& a, const SIMeasurement& b);
+    static bool unitsMatch(const SIMeasurement& messurement, const SIUnit& unit);
+
     friend SIMeasurement operator*(const SIMeasurement& lhs, const SIMeasurement& rhs);
     friend SIMeasurement operator/(const SIMeasurement& lhs, const SIMeasurement& rhs);
     friend SIMeasurement operator+(const SIMeasurement& lhs, const SIMeasurement& rhs);

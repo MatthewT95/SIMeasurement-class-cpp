@@ -165,6 +165,21 @@ std::string SIMeasurement::toString() const
     return std::string();
 }
 
+bool SIMeasurement::unitsMatch(const SIMeasurement& a, const SIMeasurement& b)
+{
+    return (a.lengthExponent == b.lengthExponent && a.timeExponent == b.timeExponent && a.massExponent == b.massExponent
+        && a.temperatureExponent == b.temperatureExponent && a.currentExponent == b.currentExponent && a.molesExponent == b.molesExponent
+        && a.luminousExponent == b.luminousExponent);
+}
+
+bool SIMeasurement::unitsMatch(const SIMeasurement& messurement, const SIUnit& unit)
+{
+    return (messurement.lengthExponent == unit.lengthExponent && messurement.timeExponent == unit.timeExponent && 
+        messurement.massExponent == unit.massExponent && messurement.temperatureExponent == unit.temperatureExponent 
+        && messurement.currentExponent == unit.currentExponent  && messurement.molesExponent == unit.molesExponent 
+        && messurement.luminousExponent == unit.luminousExponent);
+}
+
 SIMeasurement operator*(const SIMeasurement& lhs, const SIMeasurement& rhs)
 {
     SIMeasurement c;
