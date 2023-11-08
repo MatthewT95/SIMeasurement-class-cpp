@@ -49,3 +49,4 @@ struct SIUnit
 #define SI_COULOMB SIUnit(0,1,0,0,1,0,0)
 #define SI_VOLT SIUnit(2,-3,1,0,-1,0,0)
 #define SI_OHM SIUnit(2,-3,1,0,-2,0,0)
+#define SI_FARAD SIUnit(-2,4,-1,0,2,0,0)
