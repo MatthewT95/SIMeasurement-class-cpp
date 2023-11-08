@@ -4,61 +4,61 @@
 SIMeasurement::SIMeasurement(double magnitude, int8_t lengthEx, int8_t timeEX, int8_t massEx, int8_t temperatureEx, int8_t currentEx, int8_t molesEx, int8_t luminousEx)
 {
     this->magnitude = magnitude;
-    this->lengthExponent = lengthEx;
-    this->timeExponent = timeEX;
-    this->massExponent = massEx;
-    this->temperatureExponent = temperatureEx;
-    this->currentExponent = currentEx;
+    this->meterExponent = lengthEx;
+    this->secondExponent = timeEX;
+    this->kilogramExponent = massEx;
+    this->kelvinExponent = temperatureEx;
+    this->ampereExponent = currentEx;
     this->molesExponent = molesEx;
-    this->luminousExponent = luminousEx;
+    this->candelaExponent = luminousEx;
 }
 
 SIMeasurement::SIMeasurement()
 {
     this->magnitude = 1.0;
-    this->lengthExponent = 0;
-    this->timeExponent = 0;
-    this->massExponent = 0;
-    this->temperatureExponent = 0;
-    this->currentExponent = 0;
+    this->meterExponent = 0;
+    this->secondExponent = 0;
+    this->kilogramExponent = 0;
+    this->kelvinExponent = 0;
+    this->ampereExponent = 0;
     this->molesExponent = 0;
-    this->luminousExponent = 0;
+    this->candelaExponent = 0;
 }
 
 SIMeasurement::SIMeasurement(double magnitude)
 {
     this->magnitude = magnitude;
-    this->lengthExponent = 0;
-    this->timeExponent = 0;
-    this->massExponent = 0;
-    this->temperatureExponent = 0;
-    this->currentExponent = 0;
+    this->meterExponent = 0;
+    this->secondExponent = 0;
+    this->kilogramExponent = 0;
+    this->kelvinExponent = 0;
+    this->ampereExponent = 0;
     this->molesExponent = 0;
-    this->luminousExponent = 0;
+    this->candelaExponent = 0;
 }
 
 SIMeasurement::SIMeasurement(double magnitude, const SIUnit unit)
 {
     this->magnitude = magnitude;
-    this->lengthExponent = unit.lengthExponent;
-    this->timeExponent = unit.timeExponent;
-    this->massExponent = unit.massExponent;
-    this->temperatureExponent = unit.temperatureExponent;
-    this->currentExponent = unit.currentExponent;
+    this->meterExponent = unit.meterExponent;
+    this->secondExponent = unit.secondExponent;
+    this->kilogramExponent = unit.kilogramExponent;
+    this->kelvinExponent = unit.kelvinExponent;
+    this->ampereExponent = unit.ampereExponent;
     this->molesExponent = unit.molesExponent;
-    this->luminousExponent = unit.luminousExponent;
+    this->candelaExponent = unit.candelaExponent;
 }
 
 SIMeasurement::SIMeasurement(const SIMeasurement& src)
 {
     this->magnitude = src.magnitude;
-    this->lengthExponent = src.lengthExponent;
-    this->timeExponent = src.timeExponent;
-    this->massExponent = src.massExponent;
-    this->temperatureExponent = src.temperatureExponent;
-    this->currentExponent = src.currentExponent;
+    this->meterExponent = src.meterExponent;
+    this->secondExponent = src.secondExponent;
+    this->kilogramExponent = src.kilogramExponent;
+    this->kelvinExponent = src.kelvinExponent;
+    this->ampereExponent = src.ampereExponent;
     this->molesExponent = src.molesExponent;
-    this->luminousExponent = src.luminousExponent;
+    this->candelaExponent = src.candelaExponent;
 }
 
 double SIMeasurement::getMagnitude() const
@@ -66,29 +66,29 @@ double SIMeasurement::getMagnitude() const
     return this->magnitude;
 }
 
-int8_t SIMeasurement::getLengthExponent() const
+int8_t SIMeasurement::getMeterExponent() const
 {
-    return this->lengthExponent;
+    return this->meterExponent;
 }
 
-int8_t SIMeasurement::getTimeExponent() const
+int8_t SIMeasurement::getSecondExponent() const
 {
-    return this->timeExponent;
+    return this->secondExponent;
 }
 
-int8_t SIMeasurement::getMassExponent() const
+int8_t SIMeasurement::getKilogramExponent() const
 {
-    return this->massExponent;
+    return this->kilogramExponent;
 }
 
-int8_t SIMeasurement::getTemperatureExponent() const
+int8_t SIMeasurement::getKelvinExponent() const
 {
-    return this->temperatureExponent;
+    return this->kelvinExponent;
 }
 
-int8_t SIMeasurement::getCurrentExponent() const
+int8_t SIMeasurement::getAmpereExponent() const
 {
-    return this->currentExponent;
+    return this->ampereExponent;
 }
 
 int8_t SIMeasurement::getMolesExponent() const
@@ -96,9 +96,9 @@ int8_t SIMeasurement::getMolesExponent() const
     return this->molesExponent;
 }
 
-int8_t SIMeasurement::getLuminousExponent() const
+int8_t SIMeasurement::getCandelaExponent() const
 {
-    return this->luminousExponent;
+    return this->candelaExponent;
 }
 
 inline void SIMeasurement::appendUnitString(std::string unitSymbol, int8_t unitExponent, std::string& unitsNumerator, std::string& unitsDenominator) const
@@ -128,13 +128,13 @@ std::string SIMeasurement::toString() const
 {
     std::string unitsNumerator = "";
     std::string unitsDenominator = "";
-    appendUnitString("s", this->getTimeExponent(), unitsNumerator, unitsDenominator);
-    appendUnitString("kg", this->getMassExponent(), unitsNumerator, unitsDenominator);
-    appendUnitString("m", this->getLengthExponent(), unitsNumerator, unitsDenominator);
-    appendUnitString("A", this->getCurrentExponent(), unitsNumerator, unitsDenominator);
-    appendUnitString("K", this->getTemperatureExponent(), unitsNumerator, unitsDenominator);
+    appendUnitString("s", this->getSecondExponent(), unitsNumerator, unitsDenominator);
+    appendUnitString("kg", this->getKilogramExponent(), unitsNumerator, unitsDenominator);
+    appendUnitString("m", this->getMeterExponent(), unitsNumerator, unitsDenominator);
+    appendUnitString("A", this->getAmpereExponent(), unitsNumerator, unitsDenominator);
+    appendUnitString("K", this->getKelvinExponent(), unitsNumerator, unitsDenominator);
     appendUnitString("mole", this->getMolesExponent(), unitsNumerator, unitsDenominator);
-    appendUnitString("cd", this->getLuminousExponent(), unitsNumerator, unitsDenominator);
+    appendUnitString("cd", this->getCandelaExponent(), unitsNumerator, unitsDenominator);
 
     // Trim extra * from unitsNumerator
     if (unitsNumerator.size() > 1)
@@ -168,30 +168,30 @@ std::string SIMeasurement::toString() const
 
 bool SIMeasurement::unitsMatch(const SIMeasurement& a, const SIMeasurement& b)
 {
-    return (a.lengthExponent == b.lengthExponent && a.timeExponent == b.timeExponent && a.massExponent == b.massExponent
-        && a.temperatureExponent == b.temperatureExponent && a.currentExponent == b.currentExponent && a.molesExponent == b.molesExponent
-        && a.luminousExponent == b.luminousExponent);
+    return (a.meterExponent == b.meterExponent && a.secondExponent == b.secondExponent && a.kilogramExponent == b.kilogramExponent
+        && a.kelvinExponent == b.kelvinExponent && a.ampereExponent == b.ampereExponent && a.molesExponent == b.molesExponent
+        && a.candelaExponent == b.candelaExponent);
 }
 
 bool SIMeasurement::unitsMatch(const SIMeasurement& messurement, const SIUnit& unit)
 {
-    return (messurement.lengthExponent == unit.lengthExponent && messurement.timeExponent == unit.timeExponent && 
-        messurement.massExponent == unit.massExponent && messurement.temperatureExponent == unit.temperatureExponent 
-        && messurement.currentExponent == unit.currentExponent  && messurement.molesExponent == unit.molesExponent 
-        && messurement.luminousExponent == unit.luminousExponent);
+    return (messurement.meterExponent == unit.meterExponent && messurement.secondExponent == unit.secondExponent && 
+        messurement.kilogramExponent == unit.kilogramExponent && messurement.kelvinExponent == unit.kelvinExponent 
+        && messurement.ampereExponent == unit.ampereExponent  && messurement.molesExponent == unit.molesExponent 
+        && messurement.candelaExponent == unit.candelaExponent);
 }
 
 SIMeasurement operator*(const SIMeasurement& lhs, const SIMeasurement& rhs)
 {
     SIMeasurement c;
     c.magnitude = lhs.magnitude * rhs.magnitude;
-    c.lengthExponent = lhs.lengthExponent + rhs.lengthExponent;
-    c.timeExponent = lhs.timeExponent + rhs.timeExponent;
-    c.massExponent = lhs.massExponent + rhs.massExponent;
-    c.temperatureExponent = lhs.temperatureExponent + rhs.temperatureExponent;
-    c.currentExponent = lhs.currentExponent + rhs.currentExponent;
+    c.meterExponent = lhs.meterExponent + rhs.meterExponent;
+    c.secondExponent = lhs.secondExponent + rhs.secondExponent;
+    c.kilogramExponent = lhs.kilogramExponent + rhs.kilogramExponent;
+    c.kelvinExponent = lhs.kelvinExponent + rhs.kelvinExponent;
+    c.ampereExponent = lhs.ampereExponent + rhs.ampereExponent;
     c.molesExponent = lhs.molesExponent + rhs.molesExponent;
-    c.luminousExponent = lhs.luminousExponent + rhs.luminousExponent;
+    c.candelaExponent = lhs.candelaExponent + rhs.candelaExponent;
     return c;
 }
 
@@ -201,13 +201,13 @@ SIMeasurement operator/(const SIMeasurement& lhs, const SIMeasurement& rhs)
     {
         SIMeasurement c;
         c.magnitude = lhs.magnitude / rhs.magnitude;
-        c.lengthExponent = lhs.lengthExponent - rhs.lengthExponent;
-        c.timeExponent = lhs.timeExponent - rhs.timeExponent;
-        c.massExponent = lhs.massExponent - rhs.massExponent;
-        c.temperatureExponent = lhs.temperatureExponent - rhs.temperatureExponent;
-        c.currentExponent = lhs.currentExponent - rhs.currentExponent;
+        c.meterExponent = lhs.meterExponent - rhs.meterExponent;
+        c.secondExponent = lhs.secondExponent - rhs.secondExponent;
+        c.kilogramExponent = lhs.kilogramExponent - rhs.kilogramExponent;
+        c.kelvinExponent = lhs.kelvinExponent - rhs.kelvinExponent;
+        c.ampereExponent = lhs.ampereExponent - rhs.ampereExponent;
         c.molesExponent = lhs.molesExponent - rhs.molesExponent;
-        c.luminousExponent = lhs.luminousExponent - rhs.luminousExponent;
+        c.candelaExponent = lhs.candelaExponent - rhs.candelaExponent;
         return c;
     }
     else

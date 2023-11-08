@@ -5,41 +5,41 @@
 
 struct SIUnit
 {
-    int8_t lengthExponent;
-    int8_t timeExponent;
-    int8_t massExponent;
-    int8_t temperatureExponent;
-    int8_t currentExponent;
+    int8_t meterExponent;
+    int8_t secondExponent;
+    int8_t kilogramExponent;
+    int8_t kelvinExponent;
+    int8_t ampereExponent;
     int8_t molesExponent;
-    int8_t luminousExponent;
+    int8_t candelaExponent;
 
-    SIUnit(int8_t lengthEx, int8_t timeEX, int8_t massEx, int8_t temperatureEx, int8_t currentEx, int8_t molesEx, int8_t luminousEx)
+    SIUnit(int8_t meterEx, int8_t secondEX, int8_t kilogramEx, int8_t kelvinEx, int8_t ampereEx, int8_t molesEx, int8_t candelaEx)
     {
-        this->lengthExponent = lengthEx;
-        this->timeExponent = timeEX;
-        this->massExponent = massEx;
-        this->temperatureExponent = temperatureEx;
-        this->currentExponent = currentEx;
+        this->meterExponent = meterEx;
+        this->secondExponent = secondEX;
+        this->kilogramExponent = kilogramEx;
+        this->kelvinExponent = kelvinEx;
+        this->ampereExponent = ampereEx;
         this->molesExponent = molesEx;
-        this->luminousExponent = luminousEx;
+        this->candelaExponent = candelaEx;
     }
 };
 
 // Base Units constants
-#define SI_LENGTH SIUnit(1, 0, 0, 0, 0, 0, 0)
-#define SI_TIME SIUnit(0, 1, 0, 0, 0, 0, 0)
-#define SI_MASS SIUnit(0, 0, 1, 0, 0, 0, 0)
-#define SI_TEMPERATURE SIUnit(0, 0, 0, 1, 0, 0, 0)
-#define SI_CURRENT SIUnit(0, 0, 0, 0, 1, 0, 0)
-#define SI_MOLE SIUnit(1, 0, 0, 0, 0, 1, 0)
-#define SI_LUMINOUS SIUnit(1, 0, 0, 0, 0, 0, 1)
+#define SI_METER SIUnit(1, 0, 0, 0, 0, 0, 0)
+#define SI_SECOND SIUnit(0, 1, 0, 0, 0, 0, 0)
+#define SI_KILOGRAM SIUnit(0, 0, 1, 0, 0, 0, 0)
+#define SI_KELVIN SIUnit(0, 0, 0, 1, 0, 0, 0)
+#define SI_AMEPERE SIUnit(0, 0, 0, 0, 1, 0, 0)
+#define SI_MOLE SIUnit(0, 0, 0, 0, 0, 1, 0)
+#define SI_CANDELA SIUnit(0, 0, 0, 0, 0, 0, 1)
 // Derived Units
-#define SI_AREA SIUnit(2, 0, 0, 0, 0, 0, 0)
-#define SI_VOLUME SIUnit(3, 0, 0, 0, 0, 0, 0)
-#define SI_VELOCITY SIUnit(1, -1, 0, 0, 0, 0, 0)
-#define SI_ACCELRATION SIUnit(1, -2, 0, 0, 0, 0, 0)
-#define SI_FREQUENCY SIUnit(0, -1, 0, 0, 0, 0, 0)
-#define SI_VOLUMETRIC_FLOW SIUnit(3, -1, 0, 0, 0, 0, 0)
-#define SI_FORCE SIUnit(1, -2, 1, 0, 0, 0, 0)
-#define SI_ENGERY SIUnit(2, -2, 1, 0, 0, 0, 0)
-#define SI_POWER SIUnit(2, -3, 1, 0, 0, 0, 0)
+#define SI_METER_SQURED SIUnit(2, 0, 0, 0, 0, 0, 0)
+#define SI_METER_CUBED SIUnit(3, 0, 0, 0, 0, 0, 0)
+#define SI_METERS_PER_SECOND SIUnit(1, -1, 0, 0, 0, 0, 0)
+#define SI_METERS_PER_SECOND_SQURED SIUnit(1, -2, 0, 0, 0, 0, 0)
+#define SI_HZ SIUnit(0, -1, 0, 0, 0, 0, 0)
+#define SI_METER_CUBED_PER_SECOND SIUnit(3, -1, 0, 0, 0, 0, 0)
+#define SI_NEWTON SIUnit(1, -2, 1, 0, 0, 0, 0)
+#define SI_JOULE SIUnit(2, -2, 1, 0, 0, 0, 0)
+#define SI_WATT SIUnit(2, -3, 1, 0, 0, 0, 0)

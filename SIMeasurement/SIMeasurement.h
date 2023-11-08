@@ -8,32 +8,32 @@ class SIMeasurement
 {
 private:
     double magnitude;
-    int8_t lengthExponent;
-    int8_t timeExponent;
-    int8_t massExponent;
-    int8_t temperatureExponent;
-    int8_t currentExponent;
+    int8_t meterExponent;
+    int8_t secondExponent;
+    int8_t kilogramExponent;
+    int8_t kelvinExponent;
+    int8_t ampereExponent;
     int8_t molesExponent;
-    int8_t luminousExponent;
+    int8_t candelaExponent;
 
     void appendUnitString(std::string unitSymbol, int8_t unitExponent, std::string& unitsNumerator, std::string& unitsDenominator) const;
 public:
     // constructors
     SIMeasurement();
-    SIMeasurement(double magnitude, int8_t lengthEx, int8_t timeEX, int8_t massEx, int8_t temperatureEx, int8_t currentEx, int8_t molesEx, int8_t luminousEx);
+    SIMeasurement(double magnitude, int8_t meterEx, int8_t timeEX, int8_t kilogramEx, int8_t kelvinEx, int8_t ampereEx, int8_t molesEx, int8_t candelaEx);
     SIMeasurement(double magnitude, const SIUnit unit);
     SIMeasurement(double magnitude);
     SIMeasurement(const SIMeasurement& src);
 
     // Getters
     double getMagnitude() const;
-    int8_t getLengthExponent() const;
-    int8_t getTimeExponent() const;
-    int8_t getMassExponent() const;
-    int8_t getTemperatureExponent() const;
-    int8_t getCurrentExponent() const;
+    int8_t getMeterExponent() const;
+    int8_t getSecondExponent() const;
+    int8_t getKilogramExponent() const;
+    int8_t getKelvinExponent() const;
+    int8_t getAmpereExponent() const;
     int8_t getMolesExponent() const;
-    int8_t getLuminousExponent() const;
+    int8_t getCandelaExponent() const;
 
     std::string toString() const;
 
