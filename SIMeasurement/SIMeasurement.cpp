@@ -208,6 +208,7 @@ SIMeasurement operator/(const SIMeasurement& lhs, const SIMeasurement& rhs)
         c.currentExponent = lhs.currentExponent - rhs.currentExponent;
         c.molesExponent = lhs.molesExponent - rhs.molesExponent;
         c.luminousExponent = lhs.luminousExponent - rhs.luminousExponent;
+        return c;
     }
     else
     {
