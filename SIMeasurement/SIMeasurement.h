@@ -48,5 +48,11 @@ public:
     // Equality operators
     friend bool operator==(const SIMeasurement& lhs, const SIMeasurement& rhs);
     friend bool operator!=(const SIMeasurement& lhs, const SIMeasurement& rhs);
+
+    // Realtionship operators
+    friend bool operator>(const SIMeasurement& lhs, const SIMeasurement& rhs);
+    friend bool operator<(const SIMeasurement& lhs, const SIMeasurement& rhs);
+    friend bool operator>=(const SIMeasurement& lhs, const SIMeasurement& rhs);
+    friend bool operator<=(const SIMeasurement& lhs, const SIMeasurement& rhs);
 };
 

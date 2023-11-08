@@ -258,3 +258,23 @@ bool operator!=(const SIMeasurement& lhs, const SIMeasurement& rhs)
 
     return !(lhs == rhs);
 }
+
+bool operator>(const SIMeasurement& lhs, const SIMeasurement& rhs)
+{
+    return (SIMeasurement::unitsMatch(lhs, rhs) && lhs.magnitude > rhs.magnitude);
+}
+
+bool operator<(const SIMeasurement& lhs, const SIMeasurement& rhs)
+{
+    return (rhs > lhs);
+}
+
+bool operator>=(const SIMeasurement& lhs, const SIMeasurement& rhs)
+{
+    return (lhs > rhs || lhs == rhs);
+}
+
+bool operator<=(const SIMeasurement& lhs, const SIMeasurement& rhs)
+{
+    return (lhs < rhs || lhs == rhs);
+}
