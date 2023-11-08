@@ -25,6 +25,7 @@ struct SIUnit
     }
 };
 
+#define SI_UNITLESS SIUnit(0,0,0,0,0,0,0)
 // Base Units constants
 #define SI_METER SIUnit(1, 0, 0, 0, 0, 0, 0)
 #define SI_SECOND SIUnit(0, 1, 0, 0, 0, 0, 0)
@@ -43,3 +44,8 @@ struct SIUnit
 #define SI_NEWTON SIUnit(1, -2, 1, 0, 0, 0, 0)
 #define SI_JOULE SIUnit(2, -2, 1, 0, 0, 0, 0)
 #define SI_WATT SIUnit(2, -3, 1, 0, 0, 0, 0)
+#define SI_RHO SIUnit(-3,0,1,0,0,0,0)
+#define SI_PASCAL SIUnit(-1,-2,1,0,0,0,0)
+#define SI_COULOMB SIUnit(0,1,0,0,1,0,0)
+#define SI_VOLT SIUnit(2,-3,1,0,-1,0,0)
+#define SI_OHM SIUnit(2,-3,1,0,-2,0,0)
