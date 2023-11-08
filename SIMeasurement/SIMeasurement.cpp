@@ -1,4 +1,5 @@
 #include "SIMeasurement.h"
+#include <stdexcept>
 
 SIMeasurement::SIMeasurement(double magnitude, int8_t lengthEx, int8_t timeEX, int8_t massEx, int8_t temperatureEx, int8_t currentEx, int8_t molesEx, int8_t luminousEx)
 {
@@ -196,14 +197,21 @@ SIMeasurement operator*(const SIMeasurement& lhs, const SIMeasurement& rhs)
 
 SIMeasurement operator/(const SIMeasurement& lhs, const SIMeasurement& rhs)
 {
-    SIMeasurement c;
-    c.magnitude = lhs.magnitude / rhs.magnitude;
-    c.lengthExponent = lhs.lengthExponent - rhs.lengthExponent;
-    c.timeExponent = lhs.timeExponent - rhs.timeExponent;
-    c.massExponent = lhs.massExponent - rhs.massExponent;
-    c.temperatureExponent = lhs.temperatureExponent - rhs.temperatureExponent;
-    c.currentExponent = lhs.currentExponent - rhs.currentExponent;
-    c.molesExponent = lhs.molesExponent - rhs.molesExponent;
-    c.luminousExponent = lhs.luminousExponent - rhs.luminousExponent;
-    return c;
+    if (rhs.magnitude != 0)
+    {
+        SIMeasurement c;
+        c.magnitude = lhs.magnitude / rhs.magnitude;
+        c.lengthExponent = lhs.lengthExponent - rhs.lengthExponent;
+        c.timeExponent = lhs.timeExponent - rhs.timeExponent;
+        c.massExponent = lhs.massExponent - rhs.massExponent;
+        c.temperatureExponent = lhs.temperatureExponent - rhs.temperatureExponent;
+        c.currentExponent = lhs.currentExponent - rhs.currentExponent;
+        c.molesExponent = lhs.molesExponent - rhs.molesExponent;
+        c.luminousExponent = lhs.luminousExponent - rhs.luminousExponent;
+    }
+    else
+    {
+        throw std::logic_error("You can not divide by an SIMessurement with magnitude of zero.");
+        return SIMeasurement();
+    }
 }
