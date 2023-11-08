@@ -50,3 +50,5 @@ struct SIUnit
 #define SI_VOLT SIUnit(2,-3,1,0,-1,0,0)
 #define SI_OHM SIUnit(2,-3,1,0,-2,0,0)
 #define SI_FARAD SIUnit(-2,4,-1,0,2,0,0)
+#define SI_TELSA SIUnit(0,-2,1,0,-1,0,0)
+#define SI_HENRY SIUnit(2,-2,1,0,-2,0,0)
