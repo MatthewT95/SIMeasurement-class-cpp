@@ -1,16 +1,16 @@
 #include "SIMeasurement.h"
 #include <stdexcept>
 
-SIMeasurement::SIMeasurement(double magnitude, int8_t lengthEx, int8_t timeEX, int8_t massEx, int8_t temperatureEx, int8_t currentEx, int8_t molesEx, int8_t luminousEx)
+SIMeasurement::SIMeasurement(double magnitude, int8_t meterEx, int8_t secondEX, int8_t kilogramEx, int8_t kelvinEx, int8_t ampereEx, int8_t molesEx, int8_t candelaEx)
 {
     this->magnitude = magnitude;
-    this->meterExponent = lengthEx;
-    this->secondExponent = timeEX;
-    this->kilogramExponent = massEx;
-    this->kelvinExponent = temperatureEx;
-    this->ampereExponent = currentEx;
+    this->meterExponent = meterEx;
+    this->secondExponent = secondEX;
+    this->kilogramExponent = kilogramEx;
+    this->kelvinExponent = kelvinEx;
+    this->ampereExponent = ampereEx;
     this->molesExponent = molesEx;
-    this->candelaExponent = luminousEx;
+    this->candelaExponent = candelaEx;
 }
 
 SIMeasurement::SIMeasurement()
