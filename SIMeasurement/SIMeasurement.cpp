@@ -153,7 +153,7 @@ std::string SIMeasurement::toString() const
     }
     else if (unitsNumerator == "")
     {
-        return std::to_string(getMagnitude()) + "1/" + unitsDenominator;
+        return std::to_string(getMagnitude()) + "/" + unitsDenominator;
     }
     else if (unitsDenominator == "")
     {
