@@ -35,7 +35,7 @@ public:
     int8_t getMolesExponent() const;
     int8_t getCandelaExponent() const;
 
-    std::string toString() const;
+    std::string toString(int precision) const;
 
     static bool unitsMatch(const SIMeasurement& a, const SIMeasurement& b);
     static bool unitsMatch(const SIMeasurement& messurement, const SIUnit& unit);

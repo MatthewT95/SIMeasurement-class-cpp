@@ -1,5 +1,6 @@
 #include "SIMeasurement.h"
 #include <stdexcept>
+#include<sstream>
 
 SIMeasurement::SIMeasurement(double magnitude, int8_t meterEx, int8_t secondEX, int8_t kilogramEx, int8_t kelvinEx, int8_t ampereEx, int8_t molesEx, int8_t candelaEx)
 {
@@ -124,7 +125,7 @@ inline void SIMeasurement::appendUnitString(std::string unitSymbol, int8_t unitE
     }
 }
 
-std::string SIMeasurement::toString() const
+std::string SIMeasurement::toString(int precision = 5) const
 {
     std::string unitsNumerator = "";
     std::string unitsDenominator = "";
@@ -147,21 +148,27 @@ std::string SIMeasurement::toString() const
         unitsDenominator = unitsDenominator.substr(0, unitsDenominator.size() - 1);
     }
 
+    std::stringstream stream;
+    stream.precision(precision);
+    stream << std::fixed;
+    stream << getMagnitude();
+    std::string magnitudeString = stream.str();
+
     if (unitsNumerator == "" && unitsDenominator == "")
     {
-        return std::to_string(getMagnitude());
+        return magnitudeString;
     }
     else if (unitsNumerator == "")
     {
-        return std::to_string(getMagnitude()) + "/" + unitsDenominator;
+        return magnitudeString + "/" + unitsDenominator;
     }
     else if (unitsDenominator == "")
     {
-        return std::to_string(getMagnitude()) + unitsNumerator;
+        return magnitudeString + unitsNumerator;
     }
     else
     {
-        return std::to_string(getMagnitude()) + unitsNumerator + "/" + unitsDenominator;
+        return magnitudeString + unitsNumerator + "/" + unitsDenominator;
     }
     return std::string();
 }
