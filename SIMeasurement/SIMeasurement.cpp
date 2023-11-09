@@ -125,7 +125,7 @@ inline void SIMeasurement::appendUnitString(std::string unitSymbol, int8_t unitE
     }
 }
 
-std::string SIMeasurement::toString(int precision = 5) const
+std::string SIMeasurement::toString() const
 {
     std::string unitsNumerator = "";
     std::string unitsDenominator = "";
@@ -148,11 +148,7 @@ std::string SIMeasurement::toString(int precision = 5) const
         unitsDenominator = unitsDenominator.substr(0, unitsDenominator.size() - 1);
     }
 
-    std::stringstream stream;
-    stream.precision(precision);
-    stream << std::fixed;
-    stream << getMagnitude();
-    std::string magnitudeString = stream.str();
+    std::string magnitudeString = std::to_string(getMagnitude());
 
     if (unitsNumerator == "" && unitsDenominator == "")
     {
