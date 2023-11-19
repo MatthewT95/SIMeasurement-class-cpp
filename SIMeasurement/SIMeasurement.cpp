@@ -340,17 +340,17 @@ std::string SIMeasurement::toString(int8_t significantDigits) const
     // Checks if there no units in numerator portion of measurement
     else if (unitsNumerator == "")
     {
-        return magnitudeString + "/" + unitsDenominator;
+        return magnitudeString + "/" + "(" + unitsDenominator + ")";
     }
     // Checks if there no units in denominator portion of measurement
     else if (unitsDenominator == "")
     {
-        return magnitudeString + unitsNumerator;
+        return magnitudeString + "(" + unitsNumerator + ")";
     }
     // Checks if there units in both in numerator and denominator
     else
     {
-        return magnitudeString + unitsNumerator + "/" + unitsDenominator;
+        return magnitudeString + "(" + unitsNumerator + "/" + unitsDenominator + ")";
     }
     return std::string();
 }
