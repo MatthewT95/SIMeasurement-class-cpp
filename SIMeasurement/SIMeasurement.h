@@ -20,9 +20,9 @@ private:
 public:
     // constructors
     SIMeasurement();
-    SIMeasurement(double magnitude, int8_t meterEx, int8_t timeEX, int8_t kilogramEx, int8_t kelvinEx, int8_t ampereEx, int8_t molesEx, int8_t candelaEx);
-    SIMeasurement(double magnitude, const SIUnit unit);
-    SIMeasurement(double magnitude);
+    SIMeasurement(double magnitude, int8_t meterEx, int8_t timeEX, int8_t kilogramEx, int8_t kelvinEx, int8_t ampereEx, int8_t molesEx, int8_t candelaEx,int8_t e = 1);
+    SIMeasurement(double magnitude, const SIUnit unit, int8_t e = 1);
+    SIMeasurement(double magnitud, int8_t e = 1);
     SIMeasurement(const SIMeasurement& src);
 
     // Getters

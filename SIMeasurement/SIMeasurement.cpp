@@ -13,7 +13,7 @@
 /// <param name="ampereEx">The Ampere exponent.</param>
 /// <param name="molesEx">The moles exponent.</param>
 /// <param name="candelaEx">The candela exponent.</param>
-SIMeasurement::SIMeasurement(double magnitude, int8_t meterEx, int8_t secondEX, int8_t kilogramEx, int8_t kelvinEx, int8_t ampereEx, int8_t molesEx, int8_t candelaEx)
+SIMeasurement::SIMeasurement(double magnitude, int8_t meterEx, int8_t secondEX, int8_t kilogramEx, int8_t kelvinEx, int8_t ampereEx, int8_t molesEx, int8_t candelaEx,int8_t e)
 {
     this->magnitude = magnitude;
     this->meterExponent = meterEx;
@@ -23,6 +23,24 @@ SIMeasurement::SIMeasurement(double magnitude, int8_t meterEx, int8_t secondEX, 
     this->ampereExponent = ampereEx;
     this->molesExponent = molesEx;
     this->candelaExponent = candelaEx;
+
+    // adjust magnitude by e
+    // Checks if e is greater then zero and multiples by 10 e times
+    if (e > 0)
+    {
+        for (int i = 0; i < e; i++)
+        {
+            this->magnitude *= 10;
+        }
+    }
+    // Checks if e is greater less then zero and divides by 10 e times
+    else  if (e < 0)
+    {
+        for (int i = 0; i > e; i--)
+        {
+            this->magnitude /= 10;
+        }
+    }
 }
 
 /// <summary>
@@ -45,7 +63,7 @@ SIMeasurement::SIMeasurement()
 /// Initializes all attributes to create a unitless measurement with provided magnitude
 /// </summary>
 /// <param name="magnitude">The magnitude of the measurement.</param>
-SIMeasurement::SIMeasurement(double magnitude)
+SIMeasurement::SIMeasurement(double magnitude, int8_t e)
 {
     
     this->magnitude = magnitude;
@@ -56,6 +74,24 @@ SIMeasurement::SIMeasurement(double magnitude)
     this->ampereExponent = 0;
     this->molesExponent = 0;
     this->candelaExponent = 0;
+
+    // adjust magnitude by e
+    // Checks if e is greater then zero and multiples by 10 e times
+    if (e > 0)
+    {
+        for (int i = 0; i < e; i++)
+        {
+            this->magnitude *= 10;
+        }
+    }
+    // Checks if e is greater less then zero and divides by 10 e times
+    else  if (e < 0)
+    {
+        for (int i = 0; i > e; i--)
+        {
+            this->magnitude /= 10;
+        }
+    }
 }
 
 /// <summary>
@@ -63,7 +99,7 @@ SIMeasurement::SIMeasurement(double magnitude)
 /// </summary>
 /// <param name="magnitude">The magnitude of the measurement.</param>
 /// <param name="unit">A template contaning the unit exponents for this measurement.</param>
-SIMeasurement::SIMeasurement(double magnitude, const SIUnit unit)
+SIMeasurement::SIMeasurement(double magnitude, const SIUnit unit, int8_t e)
 {
     this->magnitude = magnitude;
     this->meterExponent = unit.meterExponent;
@@ -73,6 +109,24 @@ SIMeasurement::SIMeasurement(double magnitude, const SIUnit unit)
     this->ampereExponent = unit.ampereExponent;
     this->molesExponent = unit.molesExponent;
     this->candelaExponent = unit.candelaExponent;
+
+    // adjust magnitude by e
+    // Checks if e is greater then zero and multiples by 10 e times
+    if (e > 0)
+    {
+        for (int i = 0; i < e; i++)
+        {
+            this->magnitude *= 10;
+        }
+    }
+    // Checks if e is greater less then zero and divides by 10 e times
+    else  if (e < 0)
+    {
+        for (int i = 0; i > e; i--)
+        {
+            this->magnitude /= 10;
+        }
+    }
 }
 
 /// <summary>
