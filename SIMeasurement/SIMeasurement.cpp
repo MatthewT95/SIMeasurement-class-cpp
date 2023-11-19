@@ -3,47 +3,6 @@
 #include<sstream>
 
 /// <summary>
-///  Initializes all attributes from provided aruguments
-/// </summary>
-/// <param name="magnitude">The magnitude of the measurement.</param>
-/// <param name="meterEx">The meter exponent.</param>
-/// <param name="secondEX">The second exponent.</param>
-/// <param name="kilogramEx">The kilogram exponent.</param>
-/// <param name="kelvinEx">The Kelvin exponent.</param>
-/// <param name="ampereEx">The Ampere exponent.</param>
-/// <param name="molesEx">The moles exponent.</param>
-/// <param name="candelaEx">The candela exponent.</param>
-SIMeasurement::SIMeasurement(double magnitude, int8_t meterEx, int8_t secondEX, int8_t kilogramEx, int8_t kelvinEx, int8_t ampereEx, int8_t molesEx, int8_t candelaEx,int8_t e)
-{
-    this->magnitude = magnitude;
-    this->meterExponent = meterEx;
-    this->secondExponent = secondEX;
-    this->kilogramExponent = kilogramEx;
-    this->kelvinExponent = kelvinEx;
-    this->ampereExponent = ampereEx;
-    this->molesExponent = molesEx;
-    this->candelaExponent = candelaEx;
-
-    // adjust magnitude by e
-    // Checks if e is greater then zero and multiples by 10 e times
-    if (e > 0)
-    {
-        for (int i = 0; i < e; i++)
-        {
-            this->magnitude *= 10;
-        }
-    }
-    // Checks if e is greater less then zero and divides by 10 e times
-    else  if (e < 0)
-    {
-        for (int i = 0; i > e; i--)
-        {
-            this->magnitude /= 10;
-        }
-    }
-}
-
-/// <summary>
 /// Initializes all attributes to there deafult setup, A unitless measurement with magnitude of one.
 /// </summary>
 SIMeasurement::SIMeasurement()
