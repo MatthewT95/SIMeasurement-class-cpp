@@ -252,11 +252,60 @@ inline void SIMeasurement::appendUnitString(std::string unitSymbol, int8_t unitE
     }
 }
 
+std::string SIMeasurement::scientificNotation(double value,int8_t significantDigits)
+{
+    int8_t exponent = 0;
+    std::string valueString = "";
+
+    // Guards against significantDigits arugment less then one
+    if (significantDigits < 1)
+    {
+        significantDigits = 1;
+    }
+
+    // Adjusts exponet so there is not more then one signifcant digit to the left of the decimal
+    while (value >= 10)
+    {
+        // Adjusts value before exponent
+        value /= 10;
+        // Increaments exponent
+        exponent += 1;
+    }
+    // Adjusts exponet so there is at one signifcant digit to the left of the decimal
+    while (value < 1)
+    {
+        // Adjusts value before exponent
+        value *= 10;
+        // Decreament exponent
+        exponent -= 1;
+    }
+
+    // Converts adjusted value to string
+    std::stringstream stream;
+    stream.precision(significantDigits - 1);
+    stream << std::fixed << value;
+    valueString = stream.str();
+
+    if (exponent > 0)
+    {
+        return valueString + "e+" + std::to_string(exponent);
+    }
+    else if (exponent < 0)
+    {
+        return valueString + "e" + std::to_string(exponent);
+    }
+    else
+    {
+        return valueString;
+    }
+    
+}
+
 /// <summary>
 /// Generates and returns a string representing the measurement.
 /// </summary>
 /// <returns>The string represention of the measurement.</returns>
-std::string SIMeasurement::toString() const
+std::string SIMeasurement::toString(int8_t significantDigits) const
 {
     std::string unitsNumerator = ""; // The numerator portion of the measurement
     std::string unitsDenominator = ""; // The denominator portion of the measurement
@@ -281,7 +330,7 @@ std::string SIMeasurement::toString() const
     }
 
     // Creates a string representing the magnitude.
-    std::string magnitudeString = std::to_string(getMagnitude());
+    std::string magnitudeString = scientificNotation(getMagnitude(),significantDigits);
 
     // Checks if there are no units in measurement
     if (unitsNumerator == "" && unitsDenominator == "")
