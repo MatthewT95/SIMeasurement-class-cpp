@@ -121,3 +121,10 @@ std::string toString(int8_t significantDigits = 4) const;
 
 toString() will return a string representing the measurement. It takes only one option argument significantDigits.The measurement will be displayed in scientific notations with no more significant digits then specified. Trailing zeros will be trimmed.
 ex. "5e+1(kg*m/s^2)"
+
+```cpp
+static bool unitsMatch(const SIMeasurement& a, const SIMeasurement& b);
+static bool unitsMatch(const SIMeasurement& messurement, const SIUnit& unit);
+```
+
+There are two static methods which will compare units. One will compare if two measurements have matching units. The other will compare a measurement to an SIUnit struct.
