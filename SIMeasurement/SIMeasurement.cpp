@@ -286,6 +286,10 @@ std::string SIMeasurement::scientificNotation(double value,int8_t significantDig
     stream << std::fixed << value;
     valueString = stream.str();
 
+    while (valueString[valueString.size()-1] == '0' || valueString[valueString.size() - 1] == '.')
+    {
+        valueString = valueString.substr(0, valueString.size() - 1);
+    }
     if (exponent > 0)
     {
         return valueString + "e+" + std::to_string(exponent);
