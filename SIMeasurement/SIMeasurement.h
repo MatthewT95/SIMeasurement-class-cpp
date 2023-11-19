@@ -22,7 +22,7 @@ public:
     // constructors
     SIMeasurement();
     SIMeasurement(double magnitude, const SIUnit unit, int8_t e = 0);
-    SIMeasurement(double magnitud, int8_t e = 0);
+    SIMeasurement(double magnitude, int8_t e = 0);
     SIMeasurement(const SIMeasurement& src);
 
     // Getters
