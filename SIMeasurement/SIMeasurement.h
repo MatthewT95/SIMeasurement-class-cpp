@@ -25,7 +25,7 @@ public:
     SIMeasurement();
     SIMeasurement(double magnitude, const SIUnit unit, int8_t e = 0);
     SIMeasurement(double magnitude, int8_t e = 0);
-    SIMeasurement(double magnitude, SIUnit2 )
+    SIMeasurement(double magnitude, SIUnit2 unit);
     SIMeasurement(const SIMeasurement& src);
 
     // Getters

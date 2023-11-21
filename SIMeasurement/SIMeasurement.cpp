@@ -53,6 +53,11 @@ SIMeasurement::SIMeasurement(double magnitude, int8_t e)
     }
 }
 
+SIMeasurement::SIMeasurement(double magnitude, SIUnit2 unit)
+{
+    *this = SIMeasurement(magnitude, unit.nonPrefixedUnit, unit.exponent);
+}
+
 /// <summary>
 /// Initializes all attributes to using provided unit as a template
 /// </summary>
