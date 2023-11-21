@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 #include <cstdint>
 #include <string>
 
@@ -12,6 +11,28 @@ struct SIUnit
     int8_t ampereExponent;
     int8_t molesExponent;
     int8_t candelaExponent;
+
+    SIUnit()
+    {
+        this->meterExponent = 0;
+        this->secondExponent = 0;
+        this->kilogramExponent = 0;
+        this->kelvinExponent = 0;
+        this->ampereExponent = 0;
+        this->molesExponent = 0;
+        this->candelaExponent = 0;
+    }
+
+    SIUnit(const SIUnit &src)
+    {
+        this->meterExponent = src.meterExponent;
+        this->secondExponent = src.secondExponent;
+        this->kilogramExponent = src.kilogramExponent;
+        this->kelvinExponent = src.kelvinExponent;
+        this->ampereExponent = src.ampereExponent;
+        this->molesExponent = src.molesExponent;
+        this->candelaExponent = src.candelaExponent;
+    }
 
     SIUnit(int8_t meterEx, int8_t secondEX, int8_t kilogramEx, int8_t kelvinEx, int8_t ampereEx, int8_t molesEx, int8_t candelaEx)
     {
