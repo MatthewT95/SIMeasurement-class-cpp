@@ -264,11 +264,114 @@ std::string SIMeasurement::scientificNotation(double value,int8_t significantDig
     
 }
 
+std::string SIMeasurement::engineeringNotation(double value, int8_t significantDigits)
+{
+    int8_t exponent = 0;
+    std::string valueString = "";
+
+    // Conevert to scientfic notation first
+    // Adjusts exponet so there is not more then one signifcant digit to the left of the decimal
+    while (value >= 10)
+    {
+        // Adjusts value before exponent
+        value /= 10;
+        // Increaments exponent
+        exponent += 1;
+    }
+    // Adjusts exponet so there is at one signifcant digit to the left of the decimal
+    while (value < 1)
+    {
+        // Adjusts value before exponent
+        value *= 10;
+        // Decreament exponent
+        exponent -= 1;
+    }
+
+    int8_t signficanteDigitsWholePortion = 0;
+
+    // Convert to engineering notation
+    if (exponent > 0)
+    {
+        if (exponent % 3 == 0)
+        {
+            signficanteDigitsWholePortion = 1;
+        }
+        else if (exponent % 3 == 1)
+        {
+            // Adjusts value before exponent
+            value *= 10;
+            // Decreament exponent
+            exponent -= 1;
+            signficanteDigitsWholePortion = 2;
+        }
+        else if (exponent % 3 == 2)
+        {
+            // Adjusts value before exponent
+            value *= 100;
+            // Decreament exponent
+            exponent -= 2;
+            signficanteDigitsWholePortion = 3;
+        }
+    }
+    else if (exponent < 0)
+    {
+        if (exponent % 3 == 0)
+        {
+            signficanteDigitsWholePortion = 1;
+        }
+        else if (exponent % 3 == -1)
+        {
+            // Adjusts value before exponent
+            value *= 100;
+            // Decreament exponent
+            exponent -= 2;
+            signficanteDigitsWholePortion = 3;
+        }
+        else if (exponent % 3 == -2)
+        {
+            // Adjusts value before exponent
+            value *= 10;
+            // Decreament exponent
+            exponent -= 1;
+            signficanteDigitsWholePortion = 2;
+        }
+    }
+
+    // Converts adjusted value to string
+    std::stringstream stream;
+    stream.precision(significantDigits - signficanteDigitsWholePortion);
+    stream << std::fixed << value;
+    valueString = stream.str();
+
+    while (valueString[valueString.size() - 1] == '0' )
+    {
+        valueString = valueString.substr(0, valueString.size() - 1);
+    }
+
+    if (valueString[valueString.size() - 1] == '.')
+    {
+        valueString = valueString.substr(0, valueString.size() - 1);
+    }
+
+    if (exponent > 0)
+    {
+        return valueString + "e+" + std::to_string(exponent);
+    }
+    else if (exponent < 0)
+    {
+        return valueString + "e" + std::to_string(exponent);
+    }
+    else
+    {
+        return valueString;
+    }
+}
+
 /// <summary>
 /// Generates and returns a string representing the measurement.
 /// </summary>
 /// <returns>The string represention of the measurement.</returns>
-std::string SIMeasurement::toString(int8_t significantDigits) const
+std::string SIMeasurement::toString(int8_t notationMode, int8_t significantDigits) const
 {
     std::string unitsNumerator = ""; // The numerator portion of the measurement
     std::string unitsDenominator = ""; // The denominator portion of the measurement
@@ -291,9 +394,20 @@ std::string SIMeasurement::toString(int8_t significantDigits) const
     {
         unitsDenominator = unitsDenominator.substr(0, unitsDenominator.size() - 1);
     }
-
+    std::string magnitudeString;
     // Creates a string representing the magnitude.
-    std::string magnitudeString = scientificNotation(getMagnitude(),significantDigits);
+    if (notationMode == 0)
+    {
+        magnitudeString = std::to_string(getMagnitude());
+    }
+    else if (notationMode == 1)
+    {
+        magnitudeString = scientificNotation(getMagnitude(), significantDigits);
+    }
+    else if (notationMode == 2)
+    {
+        magnitudeString = engineeringNotation(getMagnitude(), significantDigits);
+    }
 
     // Checks if there are no units in measurement
     if (unitsNumerator == "" && unitsDenominator == "")

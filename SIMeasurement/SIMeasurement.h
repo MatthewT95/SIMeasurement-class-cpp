@@ -18,6 +18,7 @@ private:
 
     void appendUnitString(std::string unitSymbol, int8_t unitExponent, std::string& unitsNumerator, std::string& unitsDenominator) const;
     static std::string scientificNotation(double value,int8_t significantDigits);
+    static std::string engineeringNotation(double value, int8_t significantDigits);
 public:
     // constructors
     SIMeasurement();
@@ -35,7 +36,7 @@ public:
     int8_t getMolesExponent() const;
     int8_t getCandelaExponent() const;
 
-    std::string toString(int8_t significantDigits = 4) const;
+    std::string toString(int8_t notationMode = 1,int8_t significantDigits = 4) const;
 
     static bool unitsMatch(const SIMeasurement& a, const SIMeasurement& b);
     static bool unitsMatch(const SIMeasurement& messurement, const SIUnit& unit);
