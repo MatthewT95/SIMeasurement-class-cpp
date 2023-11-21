@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SIMeasurement.cpp" />
+    <ClCompile Include="SIUnit2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SIMeasurement.h" />
