@@ -2,6 +2,7 @@
 #include <cstdint>
 #include <string>
 #include "SIUnit.h"
+#include "SIUnit2.h"
 #include <iostream>
 
 class SIMeasurement
@@ -24,6 +25,7 @@ public:
     SIMeasurement();
     SIMeasurement(double magnitude, const SIUnit unit, int8_t e = 0);
     SIMeasurement(double magnitude, int8_t e = 0);
+    SIMeasurement(double magnitude, SIUnit2 )
     SIMeasurement(const SIMeasurement& src);
 
     // Getters

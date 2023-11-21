@@ -24,3 +24,10 @@ struct SIUnit2
 		this->exponent = exponent;
 	}
 };
+
+// Perfixed units
+// Meters
+#define SI_KILOMETER SIUnit2(SI_METER,3)
+#define SI_MILLIMETER SIUnit2(SI_METER,-3)
+#define SI_MICROMETER SIUnit2(SI_METER,-6)
+#define SI_NANOMETER SIUnit2(SI_METER,-9)

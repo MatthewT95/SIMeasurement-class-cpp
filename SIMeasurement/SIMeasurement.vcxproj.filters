@@ -21,7 +21,7 @@
     <ClCompile Include="SIMeasurement.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SIUnit2.cpp">
+    <ClCompile Include="SIUnit2.h">
       <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
