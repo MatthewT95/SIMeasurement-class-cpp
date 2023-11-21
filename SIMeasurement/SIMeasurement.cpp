@@ -217,13 +217,13 @@ std::string SIMeasurement::scientificNotation(double value,int8_t significantDig
     std::string valueString = "";
 
     // Guards against significantDigits arugment less then one
-    if (significantDigits < 1)
+    if (significantDigits < 1 && value != 0)
     {
         significantDigits = 1;
     }
 
     // Adjusts exponet so there is not more then one signifcant digit to the left of the decimal
-    while (value >= 10)
+    while (value >= 10 && value != 0)
     {
         // Adjusts value before exponent
         value /= 10;
@@ -271,7 +271,7 @@ std::string SIMeasurement::engineeringNotation(double value, int8_t significantD
 
     // Conevert to scientfic notation first
     // Adjusts exponet so there is not more then one signifcant digit to the left of the decimal
-    while (value >= 10)
+    while (value >= 10 && value != 0)
     {
         // Adjusts value before exponent
         value /= 10;
@@ -279,7 +279,7 @@ std::string SIMeasurement::engineeringNotation(double value, int8_t significantD
         exponent += 1;
     }
     // Adjusts exponet so there is at one signifcant digit to the left of the decimal
-    while (value < 1)
+    while (value < 1 && value != 0)
     {
         // Adjusts value before exponent
         value *= 10;
